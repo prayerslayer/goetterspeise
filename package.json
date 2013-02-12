@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "engines": {
     "node": "0.8.1",
-    "npm": "1.1.33"  
+    "npm": "1.1.32"  
   },
   "dependencies": {
     "cradle": ">=0.6.0",
