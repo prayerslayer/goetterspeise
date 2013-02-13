@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks( "grunt-compass" );
   grunt.loadNpmTasks( "grunt-yui-compressor" );
-  grunt.loadNpmTasks( "grunt-clean" );
+  grunt.loadNpmTasks( "grunt-cleanx" );
 
   // Project configuration.
   grunt.initConfig({
@@ -57,8 +57,12 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      css: "public/styles/stylesheets",
-      js: "public/scripts/code*.js"
+      css: {
+        dirs: ["public/styles/stylesheets"]
+      },
+      js: {
+        files: ["public/scripts/code.js", "public/scripts/code.min.js"]
+      }
     }
   });
 
