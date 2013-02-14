@@ -37,8 +37,8 @@ module.exports = function(grunt) {
     },
     compass: {
       styles: {
-        src: "public/styles/sass",
-        dest: "public/styles/stylesheets",
+        src: "public/styles",
+        dest: "public/styles",
         linecomments: false,
         relativeassets: true,
         images: "public/images"
