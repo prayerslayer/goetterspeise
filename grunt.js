@@ -31,13 +31,13 @@ module.exports = function(grunt) {
         dest: "public/scripts/code.js"
       },
       css: {
-        src: "public/styles/stylesheets/**/*.css",
-        dest: "public/styles/stylesheets/style.css"
+        src: "public/styles/*.css",
+        dest: "public/styles/style.css"
       }
     },
     compass: {
       styles: {
-        src: "public/styles",
+        src: "assets/styles",
         dest: "public/styles",
         linecomments: false,
         relativeassets: true,
@@ -52,21 +52,21 @@ module.exports = function(grunt) {
     },
     cssmin: {
       css: {
-        src: "public/styles/stylesheets/style.css",
-        dest: "public/styles/stylesheets/style.min.css"
+        src: "public/styles/screen.css",
+        dest: "public/styles/screen.min.css"
       }
     },
     clean: {
       css: {
-        dirs: ["public/styles/stylesheets"]
+        dirs: ["public/styles"]
       },
       js: {
-        files: ["public/scripts/code.js", "public/scripts/code.min.js"]
+        dirs: ["public/scripts"]
       }
     }
   });
 
   // Default task.
   grunt.registerTask('default', 'watch');
-  grunt.registerTask( "build", "clean compass concat cssmin min" );
+  grunt.registerTask( "build", "clean compass cssmin min" );
 };
