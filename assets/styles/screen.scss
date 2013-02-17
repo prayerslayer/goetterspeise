@@ -26,8 +26,8 @@
 @import "libs/reset";
 @import "libs/settings";
 @import "libs/mixins";
-
-
+@import "libs/grid";
+@import "libs/media";
 
 /* ::Clearfixs and extends. Use which suits best */
 /* ----------------------------------------------------------- */
@@ -52,14 +52,19 @@
 
 /* ::Base styles Almost exclusively single element selectors */
 /* ------------------------------------------------------------ */
+@import "compass/css3/border-radius";
+@import "libs/forms";	
+@import "libs/typography"; 	
 
 html {
-	font-size: 100%;
+	font-size: $base-font-size;
 }
 
 body { 
 	color: $base-color;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: $base-sans-font;
+	margin: rhythm( 1, $base-font-size );
+	background-color: $tertiary;
 }
 
 a {
@@ -68,15 +73,26 @@ a {
 	&:hover, &:focus, &:active {
 		color: $action-respond
 	}
+}		
+
+header {
+	padding-bottom: rhythm( 2, $base-font-size );
 }
 
-// Import base typography into the cascade (if required)
-@import "libs/typography"; 		
+code, pre {
+	font-family: $base-mono-font;
+	overflow-y: scroll;
+	color: $blue;
+}
 
-
-// Import form styles into the cascade (if required)
-@import "libs/forms";			
-
+.navigation__icon {
+	font-family: $base-icon-font;
+	height: 66px;
+	width: 66px;
+	padding-bottom: rhythm( 1, $base-font-size );
+	@include adjust-font-size-to( 26px );
+}
+// -----------------
 
 
 // -------------------------------------------------------------------------------------------------------
@@ -98,18 +114,7 @@ a {
 }
 
 /* Example styles - you'll most likey want to remove*/
-header {
-	@include padding-leader(4);
-	@include padding-trailer(2);
-	@include trailer(6);
-	background: #333;
-	h1 { color: #fff; }
-}
 
-section 				{ @extend .clearfix; }
-h1 						{ font-weight: 600; }
-ol 						{ @include ordered-inside }
-ul 						{ @include unordered-inside }
 
 
 

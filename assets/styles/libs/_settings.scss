@@ -6,10 +6,16 @@
 
 // Define your main colour palette
 
-$primary							: #666;
-$secondary							: #222;	
-$tertiary							: #444;
+$primary							: #222;
+$secondary							: #666;	
+$tertiary							: #fcfcfc;
 
+$orange								: #c14c44;
+$darkblue							: #243e6b;
+$blue								: #286177;
+$red 								: #91303f;
+$green								: #1f541c;
+$brown								: #4d3719;
 
 
 // Assign colours to variable roles
@@ -20,11 +26,10 @@ $secondary-heading-color			: $tertiary;
 
 
 // Links
-$action								: $primary;
-$action-respond						: $secondary;
+$action								: $green;
+$action-respond						: $darkblue;
 $secondary-action					: $action-respond;
 $secondary-action-respond			: $action;
-
 
 
 // Alerts, errors and UI interface
@@ -40,8 +45,12 @@ $success 							: green;
 
 // Fonts size and line height defaults for our calculations
 
-$base-font-size						: 16px; 				// Sets the browser default size. Shouldn't need to change this.
-$base-line-height					: 8px;					// Baseline grid. Set to a sensible, small size.
+$base-sans-font						: Helvetica, Arial, sans-serif;
+$base-mono-font						: Menlo, monospace;
+$base-serif-font					: Georgia, serif;
+$base-icon-font						: "basic";
+$base-font-size						: 24px; 				// Sets the browser default size. Shouldn't need to change this.
+$base-line-height					: 16px;					// Baseline grid. Set to a sensible, small size.
 $round-to-nearest-half-line			: false;  				// Round the line height to the nearest half line height. Off by default 
 
 

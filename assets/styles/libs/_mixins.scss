@@ -36,6 +36,10 @@
 	list-style-type: none;
 }
 
+@mixin resize-font-to( $size, $mtop, $mbottom ) {
+	@include adjust-font-size-to( $size );
+	margin: rhythm($mtop, $size) 0 rhythm($mbottom, $size) 0;
+}
 
 // Advanced typography settings
 // -------------------------------------------------------
