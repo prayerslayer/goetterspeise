@@ -49,8 +49,10 @@ $base-sans-font						: Helvetica, Arial, sans-serif;
 $base-mono-font						: Menlo, monospace;
 $base-serif-font					: Georgia, serif;
 $base-icon-font						: "basic";
-$base-font-size						: 24px; 				// Sets the browser default size. Shouldn't need to change this.
-$base-line-height					: 16px;					// Baseline grid. Set to a sensible, small size.
+//$mobile-font-size					: 16px;
+//$large-font-size					: 24px;
+$base-font-size						: 22px;
+$base-line-height					: 11px;					// Baseline grid. Set to a sensible, small size.
 $round-to-nearest-half-line			: false;  				// Round the line height to the nearest half line height. Off by default 
 
 

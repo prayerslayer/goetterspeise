@@ -1,7 +1,9 @@
+@import "compass/css3";
+@import "compass/utilities";
 @import "media";
 
 $grid-min-width: 320px;
-$grid-max-width: 680px;
+$grid-max-width: 740px;
 $gutter: 10px;
 
 [class*="col-"] {
@@ -39,11 +41,16 @@ $gutter: 10px;
 	width: 20%;
 }
 
+.pull-right {
+	float: right;
+}
+
 .grid {
+	@extend .clearfix;
 	padding: $gutter;
-	width: inherit;
-	min-width: $grid-min-width;
-	max-width: $grid-max-width;
+	@include tablet-portrait-and-up {
+		max-width: $grid-max-width;
+	}
 	margin: 0 auto;
 }
 

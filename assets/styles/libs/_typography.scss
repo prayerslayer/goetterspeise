@@ -4,7 +4,7 @@
 
 // SET-UP CORE FONT SIZING AND RHYTHM
 
-$mobile-font-size: 16px;
+// Font sizes for mobile, normal and large displays: 16px, 20px, 24px
 
 // Default Sizing and spacing
 // ------------------------------------------------------------
@@ -13,36 +13,42 @@ $mobile-font-size: 16px;
 // IE, if you have a baseline of 6px, multiples or divisions of often provide best results in ems 
 
 h1 { 
-	@include resize-font-to( $base-font-size*1.3 , 0, 2 );
+	@include resize-font-to( $base-font-size * 1.5, 0, 2 );
+	/*
+	@include resize-font-to( $base-font-size * 1.3, 0, 2 );
 	@include mobile-landscape-and-below{
-		@include resize-font-to( $base-font-size*1.1 , 0, 2 );
+		@include resize-font-to( $mobile-font-size * 1.3, 0, 2 );
 	}
 	@include desktop-and-up {
-		@include resize-font-to( $base-font-size*1.5 , 0, 2 );
-	}
+		@include resize-font-to( $large-font-size* 1.3, 0, 2 );
+	}*/
 	font-weight: 500;
 } 
 			
 h2, h3, h4, h5, h6 { 
-	@include resize-font-to( $mobile-font-size * 1.3, 4, 2 );
+	@include resize-font-to( $base-font-size * 1.2, 0, 2 );
+	/*
+	@include resize-font-to( $base-font-size* 1.1, 4, 2 );
 	@include mobile-landscape-and-below {
-		@include resize-font-to( $mobile-font-size * 1.1, 4, 2 );
+		@include resize-font-to( $mobile-font-size* 1.1, 4, 2 );
 	}
 	@include desktop-and-up {
-		@include resize-font-to( $mobile-font-size * 1.5, 4, 2 );
-	}
-	font-weight: 500; 
+		@include resize-font-to( $large-font-size * 1.1 , 4, 2 );
+	}*/
+	font-weight: 600; 
 }
 
 p, pre, label, ol, ul, code, pre { 
-	@include resize-font-to($base-font-size * 0.8, 0, 2); 
+	@include resize-font-to( $base-font-size, 0, 2 );
+	/*
+	@include resize-font-to($base-font-size, 0, 2); 
 	@include mobile-landscape-and-below {
 		@include resize-font-to( $mobile-font-size, 0, 2 );
 	}
 
 	@include desktop-and-up {
-		@include resize-font-to( $base-font-size, 0, 2 );
-	}
+		@include resize-font-to( $large-font-size, 0, 2 );
+	}*/
 								// 2 lines below, based on font size
 }
 

@@ -79,6 +79,10 @@ header {
 	padding-bottom: rhythm( 2, $base-font-size );
 }
 
+footer {
+	padding-top: rhythm( 2, $base-font-size );
+}
+
 code, pre {
 	font-family: $base-mono-font;
 	overflow-y: scroll;
@@ -124,39 +128,6 @@ code, pre {
 // If using gridset or another pre-defined grid, these should match up to the same breakpoints
 
 // Below examples use a mobile-first approach
-
-
-// Eg for 480px
-@media screen and (min-width: em-font(480px)) {
-	.container {
-		width: 95%;
-	}
-}
-
-
-// Eg for 800px
-@media screen and (min-width: em-font(800px)) {
-	.container {
-		min-width: em-font(780px);
-	}
-}
-
-// Eg for 1240px
-@media screen and (min-width: em-font(1240px)) {
-	.container {
-		max-width: em-font(1080px);
-	}
-}
-
-// Print styles
-@media print {
-	body {
-		// Smaller type for printing. Save a tree
-		font-size: percentage(10 / 16);
-		@include adjust-leading-to(2);
-	}
-}
-
 
 // IOS specifics 
 @media screen and (max-width: 769px) {  // Absolute measure here, as we're talking about devices, not screen size
