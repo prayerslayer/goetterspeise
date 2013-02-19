@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( "grunt-compass" );
   grunt.loadNpmTasks( "grunt-yui-compressor" );
   grunt.loadNpmTasks( "grunt-cleanx" );
+  grunt.loadNpmTasks( "grunt-contrib-watch" );
 
   // Project configuration.
   grunt.initConfig({
@@ -17,8 +18,8 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: [ 'public/styles/sass/**/*.scss', "public/styles/sass/**/*.sass" ],
-        tasks: [ 'compass:styles']
+        files: [ '/asssets/styles/**/*.scss' ],
+        tasks: 'build'
       },
       js: {
         files: [ "public/scripts/**/!(code).js" ],
@@ -31,15 +32,15 @@ module.exports = function(grunt) {
         dest: "public/scripts/code.js"
       },
       css: {
-        src: "public/styles/*.css",
+        src: "assets/styles/*.css",
         dest: "public/styles/style.css"
       }
     },
     compass: {
       styles: {
         src: "assets/styles",
-        dest: "public/styles",
-        linecomments: false,
+        dest: "assets/styles",
+        linecomments: true,
         relativeassets: true,
         images: "public/images"
       }
@@ -52,8 +53,8 @@ module.exports = function(grunt) {
     },
     cssmin: {
       css: {
-        src: "public/styles/screen.css",
-        dest: "public/styles/screen.min.css"
+        src: "public/styles/style.css",
+        dest: "public/styles/style.min.css"
       }
     },
     clean: {
@@ -68,5 +69,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'watch');
-  grunt.registerTask( "build", "clean compass cssmin min" );
+  grunt.registerTask( "build", "clean compass concat cssmin min" );
+  grunt.registerTask( "css-dev", "clean:css compass:styles concat" );
 };
