@@ -1,25 +1,28 @@
-var bogart = require( 'bogart' ),
-	path = require( "path" );
+var express = require( 'express' ),
+	path = require( "path" ),
+	routes = require( "./routes" ),
+	app = express();
 
-var router = bogart.router(),
-	views = bogart.viewEngine( "mustache", path.join( bogart.maindir(), "partials") );
-
-router.get('/', function() {
-  return bogart.html('Hello World');
+app.configure( function() {
+	app.set( 'views', __dirname + '/partials' );
+	app.set( 'view engine', 'mmm' );
+	app.set( 'layout', 'layout' );
+	app.use( express.favicon() );
+	app.use( express.logger( 'dev' ) );
+	app.use( express.bodyParser() );
+	app.use( express.methodOverride() );
+	app.use( express.cookieParser('Fee-fi-fo-fum') );
+	app.use( express.session() );
+	app.use( app.router );
+	app.use( express.static( path.join( __dirname, 'public' ) ) );
 });
 
-router.get( "/hello/:name", function( req ) {
-	return views.respond( "hello.html", {
-		"locals": {
-			"name": req.params.name
-		}
+app.get( '/', routes.index );
+app.get( "/read/:something?", function( req, res ) {
+	return res.render( "read", {
+		"next_title": "New stuff", 
+		"prev_title": "This is old"
 	});
 });
 
-var app = bogart.app();
-
-app.use(bogart.batteries); // A batteries included JSGI stack including streaming request body parsing, session, flash, and much more.
-app.use( bogart.middleware.Parted );
-app.use(router); // Our router
-
-app.start( process.env.PORT );
+app.listen( process.env.PORT );

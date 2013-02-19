@@ -1,0 +1,15 @@
+<header>
+	<h1>Götterspeise</h1>
+</header>
+<div class="grid">
+	<div class="col-1-1">
+		<h2>Your reading list</h2>
+		<p>
+			<ul>
+				{{#tags}}
+					<li><a href="{{link}}">{{name}}</a>
+				{{/tags}}
+			</ul>
+		</p>
+	</div>
+</div>
