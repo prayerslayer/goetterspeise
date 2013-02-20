@@ -18,8 +18,8 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: 'asssets/styles/**/*.scss',
-        tasks: [ 'test-task:test', "css-dev" ]
+        files: 'assets/styles/**/*.scss',
+        tasks: [ "css-dev" ]
       }
     },
     concat: {
@@ -52,8 +52,8 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'watch');
-  grunt.registerTask( "build", "clean compass concat" );
-  grunt.registerTask( "css-dev", "clean:css compass:styles concat" );
+  grunt.registerTask( "build", [ "clean", "compass", "concat" ] );
+  grunt.registerTask( "css-dev", [ "clean:css", "compass:styles", "concat:css" ] );
   grunt.registerTask( "test-task", "test", function() {
     grunt.log.writeln( "executed task" );
   });
