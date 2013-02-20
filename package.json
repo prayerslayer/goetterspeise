@@ -11,11 +11,10 @@
     "mmm": "0.2.x"
   },
   "devDependencies": {
-    "grunt-clean": "0.4.x",
-    "grunt-cleanx": "0.5.x",
-    "grunt-compass": "0.3.x",
-    "grunt-contrib-watch": "0.1.x",
-    "grunt-css": "0.5.x",
-    "grunt-yui-compressor": "0.2.x"
+    "grunt": "0.4.x",
+    "grunt-contrib-compass": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-concat": "latest"
   }
 }

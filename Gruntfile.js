@@ -1,9 +1,9 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-  grunt.loadNpmTasks( "grunt-compass" );
-  grunt.loadNpmTasks( "grunt-yui-compressor" );
-  grunt.loadNpmTasks( "grunt-cleanx" );
+  grunt.loadNpmTasks( "grunt-contrib-compass" );
+  grunt.loadNpmTasks( "grunt-contrib-clean" );
+  grunt.loadNpmTasks( "grunt-contrib-concat" );
   grunt.loadNpmTasks( "grunt-contrib-watch" );
 
   // Project configuration.
@@ -18,12 +18,8 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: [ '/asssets/styles/**/*.scss' ],
-        tasks: 'build'
-      },
-      js: {
-        files: [ "public/scripts/**/!(code).js" ],
-        tasks: [ "concat:js" ]
+        files: 'asssets/styles/**/*.scss',
+        tasks: [ 'test-task:test', "css-dev" ]
       }
     },
     concat: {
@@ -38,37 +34,27 @@ module.exports = function(grunt) {
     },
     compass: {
       styles: {
-        src: "assets/styles",
-        dest: "assets/styles",
-        linecomments: true,
-        relativeassets: true,
-        images: "public/images"
-      }
-    },
-    min: {
-      js: {
-        src: "public/scripts/code.js",
-        dest: "public/scripts/code.min.js"
-      }
-    },
-    cssmin: {
-      css: {
-        src: "public/styles/style.css",
-        dest: "public/styles/style.min.css"
+        options: {
+          sassDir: "assets/styles",
+          cssDir: "public/styles",
+          noLineComments: false,
+          quiet: false,
+          relativeAssets: true,
+          imagesDir: "public/images"
+        }
       }
     },
     clean: {
-      css: {
-        dirs: ["public/styles"]
-      },
-      js: {
-        dirs: ["public/scripts"]
-      }
+      css: ["public/styles"],
+      js: ["public/scripts"]
     }
   });
 
   // Default task.
   grunt.registerTask('default', 'watch');
-  grunt.registerTask( "build", "clean compass concat cssmin min" );
+  grunt.registerTask( "build", "clean compass concat" );
   grunt.registerTask( "css-dev", "clean:css compass:styles concat" );
+  grunt.registerTask( "test-task", "test", function() {
+    grunt.log.writeln( "executed task" );
+  });
 };
