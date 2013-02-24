@@ -3,19 +3,8 @@
 @import "media";
 
 $grid-min-width: 320px;
-$grid-max-width: 740px;
+$grid-max-width: 1024px;
 $gutter: 10px;
-
-[class*="col-"] {
-	float: left;	// if this is a col class, float it left
-	padding-right: $gutter; // gutter
-	@include tablet-portrait-and-up {
-		padding-right: 2*$gutter;
-	}
-	@include desktop-and-up {
-		padding-right: 4*$gutter;
-	}
-}
 
 [class*="col-"]::last-of-type {
 	padding-right: 0px;
@@ -23,6 +12,10 @@ $gutter: 10px;
 
 .col-1-1 {
 	width: 100%;
+}
+
+.col-3-4 {
+	width: 75%;
 }
 
 .col-1-2 {
@@ -33,6 +26,10 @@ $gutter: 10px;
 	width: 33.33%;
 }
 
+.col-2-3 {
+	width: 66.66%;
+}
+
 .col-1-4 {
 	width: 25%;
 }
@@ -41,12 +38,35 @@ $gutter: 10px;
 	width: 20%;
 }
 
+.col-1-6 {
+	width: 16.66%;
+}
+
+.col-5-6 {
+	width: 83.33%;
+}
+
+[class*="col-"] {
+	float: left;	// if this is a col class, float it left
+	padding-right: $gutter; // gutter
+	@include tablet-portrait-and-below {
+		float:none;
+		width: 100%;
+	}
+	@include tablet-portrait-and-up {
+		padding-right: 2*$gutter;
+	}
+	@include desktop-and-up {
+		padding-right: 4*$gutter;
+	}
+}
+
 .pull-right {
 	float: right;
 }
 
 .grid {
-	@extend .clearfix;
+	@extend .pie-clearfix;
 	padding: $gutter;
 	@include tablet-portrait-and-up {
 		max-width: $grid-max-width;

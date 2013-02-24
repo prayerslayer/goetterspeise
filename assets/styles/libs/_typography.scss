@@ -22,7 +22,7 @@ h1 {
 	@include desktop-and-up {
 		@include resize-font-to( $large-font-size* 1.3, 0, 2 );
 	}*/
-	font-weight: 500;
+	font-weight: 300;
 } 
 			
 h2, h3, h4, h5, h6 { 
@@ -52,6 +52,13 @@ p, pre, label, ol, ul, code, pre {
 								// 2 lines below, based on font size
 }
 
+ul > ul,
+ul > ol,
+ol > ul,
+ol > ol {
+	margin-left: em-font( $base-font-size );
+}
+
 li {
 	line-height: auto;
 }
@@ -65,8 +72,8 @@ strong, b 	{ font-weight: 600; }
 em, i, q 	{ font-style: italic; }
 
 blockquote {
-	padding-left: em-font( 16px );
-	margin-left: em-font( -16px );
+	padding-left: em-font( $base-font-size );
+	margin-left: em-font( -$base-font-size );
 	border-left: em-font(5px) solid $orange;
 	line-height: normal;
 	p {

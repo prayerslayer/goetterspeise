@@ -24,9 +24,9 @@
 @import "compass/utilities";
 
 @import "libs/reset";
+@import "libs/grid";
 @import "libs/settings";
 @import "libs/mixins";
-@import "libs/grid";
 @import "libs/media";
 
 /* ::Clearfixs and extends. Use which suits best */
@@ -46,7 +46,7 @@
 // OTHER EXTENDS
 
 // Max width, for images etc... in RWD
-.max-width 			{ max-width: 100%; height: auto; }
+.max-width 			{ max-width: 120%; height: auto; }
 
 
 
@@ -111,15 +111,7 @@ code, pre {
 /* ::Layout styles - Layouts hold one or more modules together. */
 /* ------------------------------------------------------------ */
 
-.container {
-	@extend .clearfix;
-	margin: 0 auto;
-	width: 95%;
-}
-
-/* Example styles - you'll most likey want to remove*/
-
-
+// see grid.scss
 
 
 /* ::Media queries */

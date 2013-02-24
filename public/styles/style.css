@@ -46,14 +46,15 @@
 .icon-cancel:before { content: '\2715'; } /* '✕' */
 .icon-left-open:before { content: '\e75d'; } /* '' */
 .icon-right-open:before { content: '\e75e'; } /* '' */
-/* line 4, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+@charset "UTF-8";
+/* line 4, ../../assets/styles/libs/_reset.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 6, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 6, ../../assets/styles/libs/_reset.scss */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -64,46 +65,46 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
 }
 
-/* line 7, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 7, ../../assets/styles/libs/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 8, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 8, ../../assets/styles/libs/_reset.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 9, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 9, ../../assets/styles/libs/_reset.scss */
 q, blockquote {
   quotes: none;
 }
 
-/* line 10, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 10, ../../assets/styles/libs/_reset.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 11, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 11, ../../assets/styles/libs/_reset.scss */
 a img {
   border: none;
 }
 
-/* line 12, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 12, ../../assets/styles/libs/_reset.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
-/* line 18, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 18, ../../assets/styles/libs/_reset.scss */
 button, input {
   line-height: normal;
 }
 
-/* line 19, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 19, ../../assets/styles/libs/_reset.scss */
 button, input, select, textarea {
   font-size: 100%;
   margin: 0;
@@ -111,135 +112,162 @@ button, input, select, textarea {
   *vertical-align: middle;
 }
 
-/* line 20, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 20, ../../assets/styles/libs/_reset.scss */
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
   *overflow: visible;
 }
 
-/* line 21, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 21, ../../assets/styles/libs/_reset.scss */
 button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 22, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_reset.scss */
+/* line 22, ../../assets/styles/libs/_reset.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
   resize: vertical;
 }
 
-/* line 9, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+/* line 9, ../../assets/styles/libs/_grid.scss */
+[class*="col-"]::last-of-type {
+  padding-right: 0px;
+}
+
+/* line 13, ../../assets/styles/libs/_grid.scss */
+.col-1-1 {
+  width: 100%;
+}
+
+/* line 17, ../../assets/styles/libs/_grid.scss */
+.col-3-4 {
+  width: 75%;
+}
+
+/* line 21, ../../assets/styles/libs/_grid.scss */
+.col-1-2 {
+  width: 50%;
+}
+
+/* line 25, ../../assets/styles/libs/_grid.scss */
+.col-1-3 {
+  width: 33.33%;
+}
+
+/* line 29, ../../assets/styles/libs/_grid.scss */
+.col-2-3 {
+  width: 66.66%;
+}
+
+/* line 33, ../../assets/styles/libs/_grid.scss */
+.col-1-4 {
+  width: 25%;
+}
+
+/* line 37, ../../assets/styles/libs/_grid.scss */
+.col-1-5 {
+  width: 20%;
+}
+
+/* line 41, ../../assets/styles/libs/_grid.scss */
+.col-1-6 {
+  width: 16.66%;
+}
+
+/* line 45, ../../assets/styles/libs/_grid.scss */
+.col-5-6  {
+  width: 83.33%;
+}
+
+/* line 49, ../../assets/styles/libs/_grid.scss */
 [class*="col-"] {
   float: left;
   padding-right: 10px;
 }
+@media only screen and (max-width: 768px) {
+  /* line 49, ../../assets/styles/libs/_grid.scss */
+  [class*="col-"] {
+    float: none;
+    width: 100%;
+  }
+}
 @media only screen and (min-width: 481px) {
-  /* line 9, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+  /* line 49, ../../assets/styles/libs/_grid.scss */
   [class*="col-"] {
     padding-right: 20px;
   }
 }
 @media only screen and (min-width: 1025px) {
-  /* line 9, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+  /* line 49, ../../assets/styles/libs/_grid.scss */
   [class*="col-"] {
     padding-right: 40px;
   }
 }
 
-/* line 20, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
-[class*="col-"]::last-of-type {
-  padding-right: 0px;
-}
-
-/* line 24, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
-.col-1-1 {
-  width: 100%;
-}
-
-/* line 28, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
-.col-1-2 {
-  width: 50%;
-}
-
-/* line 32, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
-.col-1-3 {
-  width: 33.33%;
-}
-
-/* line 36, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
-.col-1-4 {
-  width: 25%;
-}
-
-/* line 40, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
-.col-1-5 {
-  width: 20%;
-}
-
-/* line 44, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+/* line 64, ../../assets/styles/libs/_grid.scss */
 .pull-right {
   float: right;
 }
 
-/* line 48, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+/* line 68, ../../assets/styles/libs/_grid.scss */
 .grid {
   padding: 10px;
   margin: 0 auto;
 }
 @media only screen and (min-width: 481px) {
-  /* line 48, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+  /* line 68, ../../assets/styles/libs/_grid.scss */
   .grid {
-    max-width: 740px;
+    max-width: 1024px;
   }
 }
 
-/* line 58, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+/* line 78, ../../assets/styles/libs/_grid.scss */
 .grid::after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 64, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_grid.scss */
+/* line 84, ../../assets/styles/libs/_grid.scss */
 .grid > [class*="col-"]::last-of-type {
   padding-right: 10px;
 }
 
 /* ::Clearfixs and extends. Use which suits best */
 /* ----------------------------------------------------------- */
-/* line 38, screen.scss */
-.clearfix, .grid, .container {
+/* line 38, ../../assets/styles/base.scss */
+.clearfix {
   overflow: hidden;
   *zoom: 1;
 }
 
-/* line 42, screen.scss */
-.pie-clearfix {
+/* line 42, ../../assets/styles/base.scss */
+.pie-clearfix, .grid {
   *zoom: 1;
 }
-/* line 38, /Users/xnikp/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-.pie-clearfix:after {
+/* line 38, ../../../../.rvm/gems/ruby-1.9.3-p194@goetterspeise/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.pie-clearfix:after, .grid:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 49, screen.scss */
+/* line 49, ../../assets/styles/base.scss */
 .max-width {
-  max-width: 100%;
+  max-width: 120%;
   height: auto;
 }
 
 /* ::Base styles Almost exclusively single element selectors */
 /* ------------------------------------------------------------ */
-/* line 8, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 8, ../../assets/styles/libs/_forms.scss */
 label, select {
   display: block;
 }
 
-/* line 12, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 12, ../../assets/styles/libs/_forms.scss */
 input[type="search"] {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -247,19 +275,19 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 20, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 20, ../../assets/styles/libs/_forms.scss */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
-/* line 24, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 24, ../../assets/styles/libs/_forms.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
-/* line 42, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 42, ../../assets/styles/libs/_forms.scss */
 textarea,
 input[type="text"],
 input[type="password"],
@@ -283,7 +311,7 @@ input[type="tel"] {
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
-/* line 53, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 53, ../../assets/styles/libs/_forms.scss */
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
@@ -293,7 +321,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-/* line 67, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 67, ../../assets/styles/libs/_forms.scss */
 input[type="file"],
 input[type="image"],
 input[type="submit"],
@@ -304,24 +332,24 @@ input[type="checkbox"] {
   width: auto;
 }
 
-/* line 72, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 72, ../../assets/styles/libs/_forms.scss */
 select,
 input[type="file"] {
   *margin-top: 4px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 }
 
-/* line 79, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_forms.scss */
+/* line 79, ../../assets/styles/libs/_forms.scss */
 select:focus,
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted #333;
+  outline: thin dotted #333333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
-/* line 15, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 15, ../../assets/styles/libs/_typography.scss */
 h1 {
   font-size: 1.5em;
   line-height: 1.33333em;
@@ -334,10 +362,10 @@ h1 {
   @include desktop-and-up {
   	@include resize-font-to( $large-font-size* 1.3, 0, 2 );
   }*/
-  font-weight: 500;
+  font-weight: 300;
 }
 
-/* line 28, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 28, ../../assets/styles/libs/_typography.scss */
 h2, h3, h4, h5, h6 {
   font-size: 1.2em;
   line-height: 1.25em;
@@ -353,7 +381,7 @@ h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* line 41, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 41, ../../assets/styles/libs/_typography.scss */
 p, pre, label, ol, ul, code, pre {
   font-size: 1em;
   line-height: 1.5em;
@@ -369,52 +397,60 @@ p, pre, label, ol, ul, code, pre {
   	}*/
 }
 
-/* line 55, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 58, ../../assets/styles/libs/_typography.scss */
+ul > ul,
+ul > ol,
+ol > ul,
+ol > ol {
+  margin-left: 1em;
+}
+
+/* line 62, ../../assets/styles/libs/_typography.scss */
 li {
   line-height: auto;
 }
 
-/* line 62, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 69, ../../assets/styles/libs/_typography.scss */
 ul {
   list-style-position: outside;
   list-style-type: disc;
 }
 
-/* line 63, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 70, ../../assets/styles/libs/_typography.scss */
 ol {
   list-style-position: outside;
   list-style-type: decimal;
 }
 
-/* line 64, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 71, ../../assets/styles/libs/_typography.scss */
 strong, b {
   font-weight: 600;
 }
 
-/* line 65, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 72, ../../assets/styles/libs/_typography.scss */
 em, i, q {
   font-style: italic;
 }
 
-/* line 67, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 74, ../../assets/styles/libs/_typography.scss */
 blockquote {
-  padding-left: 0.72727em;
-  margin-left: -0.72727em;
+  padding-left: 1em;
+  margin-left: -1em;
   border-left: 0.22727em solid #c14c44;
   line-height: normal;
 }
-/* line 72, /Users/xnikp/Sites/goetterspeise/assets/styles/libs/_typography.scss */
+/* line 79, ../../assets/styles/libs/_typography.scss */
 blockquote p {
   font-style: italic;
   font-family: Georgia, serif;
 }
 
-/* line 59, screen.scss */
+/* line 59, ../../assets/styles/base.scss */
 html {
   font-size: 22px;
 }
 
-/* line 63, screen.scss */
+/* line 63, ../../assets/styles/base.scss */
 body {
   color: #222222;
   font-family: Helvetica, Arial, sans-serif;
@@ -422,7 +458,7 @@ body {
   background-color: #fcfcfc;
 }
 
-/* line 70, screen.scss */
+/* line 70, ../../assets/styles/base.scss */
 a {
   color: #1f541c;
   white-space: pre;
@@ -434,29 +470,29 @@ a {
   white-space: -hp-pre-wrap;
   word-wrap: break-word;
 }
-/* line 73, screen.scss */
+/* line 73, ../../assets/styles/base.scss */
 a:hover, a:focus, a:active {
   color: #243e6b;
 }
 
-/* line 78, screen.scss */
+/* line 78, ../../assets/styles/base.scss */
 header {
   padding-bottom: 1em;
 }
 
-/* line 82, screen.scss */
+/* line 82, ../../assets/styles/base.scss */
 footer {
   padding-top: 1em;
 }
 
-/* line 86, screen.scss */
+/* line 86, ../../assets/styles/base.scss */
 code, pre {
   font-family: Menlo, monospace;
   overflow-y: scroll;
   color: #286177;
 }
 
-/* line 92, screen.scss */
+/* line 92, ../../assets/styles/base.scss */
 .navigation__icon {
   font-family: "basic";
   height: 66px;
@@ -468,13 +504,6 @@ code, pre {
 
 /* ::Layout styles - Layouts hold one or more modules together. */
 /* ------------------------------------------------------------ */
-/* line 114, screen.scss */
-.container {
-  margin: 0 auto;
-  width: 95%;
-}
-
-/* Example styles - you'll most likey want to remove*/
 /* ::Media queries */
 /* ------------------------------------------------------------ */
 @media screen and (max-width: 769px) {
@@ -482,30 +511,30 @@ code, pre {
 }
 /* ::State styles */
 /* ------------------------------------------------------------ */
-/* line 141, screen.scss */
+/* line 133, ../../assets/styles/base.scss */
 .is-hidden {
   display: none;
 }
 
-/* line 145, screen.scss */
+/* line 137, ../../assets/styles/base.scss */
 .is-shown, .is-block {
   display: block;
 }
 
-/* line 149, screen.scss */
+/* line 141, ../../assets/styles/base.scss */
 .is-uppercase {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* line 154, screen.scss */
+/* line 146, ../../assets/styles/base.scss */
 .is-lowercase {
   text-transform: lowercase;
 }
 
 /* ::Debugs and #grid by Jon Gibbins */
 /* ----------------------------------------------------------- */
-/* line 163, screen.scss */
+/* line 155, ../../assets/styles/base.scss */
 #grid {
   width: 100%;
   position: absolute;
@@ -513,10 +542,20 @@ code, pre {
   left: 0;
 }
 
-/* line 170, screen.scss */
+/* line 162, ../../assets/styles/base.scss */
 #grid div.horiz {
   height: 11px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
   margin: 0;
   padding: 0;
+}
+
+/* line 3, ../../assets/styles/read.scss */
+.post {
+  width: 100%;
+}
+
+/* line 7, ../../assets/styles/read.scss */
+.sidebar__tags {
+  width: 100%;
 }

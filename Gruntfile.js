@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         dest: "public/scripts/code.js"
       },
       css: {
-        src: "assets/styles/*.css",
+        src: ["assets/styles/*.css", "public/styles/*.css"],
         dest: "public/styles/style.css"
       }
     },
