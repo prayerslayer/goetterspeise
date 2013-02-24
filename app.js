@@ -6,7 +6,7 @@ var express = require( 'express' ),
 app.configure( function() {
 	app.set( 'views', __dirname + '/partials' );
 	app.set( 'view engine', 'mmm' );
-	app.set( 'layout', 'layout' );
+	app.set( 'layout', 'read-layout' );
 	app.use( express.favicon() );
 	app.use( express.logger( 'dev' ) );
 	app.use( express.bodyParser() );
@@ -20,7 +20,7 @@ app.configure( function() {
 app.get( '/', routes.index );
 app.get( "/read/:something?", function( req, res ) {
 	return res.render( "read", {
-		"next_title": "New stuff", 
+		"next_title": "New stuff you will totally like and if not I'll wet my pants", 
 		"prev_title": "This is old"
 	});
 });

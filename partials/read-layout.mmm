@@ -9,12 +9,20 @@
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="cleartype" content="on">
-        <link rel="stylesheet" href="/styles/basic.css" >
         <link rel="stylesheet" href="/styles/style.css">
     </head>
     <body>
-        <div class="grid">
-            {{> content}}
+        <div class="grid pie-clearfix">
+            <div class="col-1-4">
+                <ul class="sidebar__tags">
+                    <li>Sidebar Item 2</li>
+                    <li>Sidebar Item 1</li>
+                </ul>
+            </div>
+            <div class="col-3-4">
+                {{>read}}
+            </div>
+            
         </div>
     </body>
 </html>

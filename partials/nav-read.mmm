@@ -1,37 +1,13 @@
-<nav class = "navigation">
+<nav>
 	<div class="grid">
-		<div class="col-1-5">
-			<a href="{{ prev_link }}" title="Previous" class="navigation__icon">
-				<i class="icon-left-open"></i>
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="/" title="Menu" class="navigation__icon">
-				<i class="icon-menu"></i>
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="{{ star_link }}" title="Menu" class="navigation__icon">
-				<i class="icon-star"></i>
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="{{ mail_link }}" title="Menu" class="navigation__icon">
-				<i class="icon-mail"></i>
-			</a>
-		</div>
-		<div class="col-1-5">
-			<a href="{{ next_link }}" title="Next" class="navigation__icon">
-				<i class="icon-right-open"></i>
-			</a>
-		</div>
+		<div class="col-1-5"><a href="{{ prev_link }}" title="Previous" class="navigation__icon"><i class="icon-left-open"></i></a></div>
+		<div class="col-1-5"><a href="/" title="Menu" class="navigation__icon"><i class="icon-menu"></i></a>		</div>
+		<div class="col-1-5"><a href="{{ star_link }}" title="Menu" class="navigation__icon"><i class="icon-star"></i></a></div>
+		<div class="col-1-5"><a href="{{ mail_link }}" title="Menu" class="navigation__icon"><i class="icon-mail"></i></a></div>
+		<div class="col-1-5"><a href="{{ next_link }}" title="Next" class="navigation__icon"><i class="icon-right-open"></i></a></div>
 	</div>
 	<div class="grid">
-		<div class="col-2-5">
-			{{prev_title}}
-		</div>
-		<div class="col-2-5 pull-right">
-			{{next_title}}
-		</div>
+		<div class="col-1-2"><i>{{prev_title}}</i></div>
+		<div class="class-col-1-2 pull-right"><i>{{next_title}}</i></div>
 	</div>
 </nav>
