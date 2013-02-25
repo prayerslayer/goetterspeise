@@ -1,0 +1,6 @@
+<h1>Götterspeise Login</h1>
+<p>Enter your email address to receive an email with your login link.</p>
+<form method="POST" action="login">
+	<input type="email" id="email" name="email" autocomplete="on" placeholder="buddy@example.com" required="required">
+	<button type="submit">Login</button>
+</form>

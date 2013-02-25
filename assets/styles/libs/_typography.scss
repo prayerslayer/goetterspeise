@@ -13,7 +13,7 @@
 // IE, if you have a baseline of 6px, multiples or divisions of often provide best results in ems 
 
 h1 { 
-	@include resize-font-to( $base-font-size * 1.5, 0, 2 );
+	@include resize-font-to( 64px, 2, 2 );
 	/*
 	@include resize-font-to( $base-font-size * 1.3, 0, 2 );
 	@include mobile-landscape-and-below{
@@ -26,7 +26,7 @@ h1 {
 } 
 			
 h2, h3, h4, h5, h6 { 
-	@include resize-font-to( $base-font-size * 1.2, 0, 2 );
+	@include resize-font-to( 40px, 0, 2 );
 	/*
 	@include resize-font-to( $base-font-size* 1.1, 4, 2 );
 	@include mobile-landscape-and-below {
@@ -50,6 +50,10 @@ p, pre, label, ol, ul, code, pre {
 		@include resize-font-to( $large-font-size, 0, 2 );
 	}*/
 								// 2 lines below, based on font size
+}
+
+small {
+	@include resize-font-to( 16px, 0, 2 );
 }
 
 ul > ul,

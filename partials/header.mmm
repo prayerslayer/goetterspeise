@@ -1,0 +1,7 @@
+<header>
+	<div class="grid">
+		<div class="col-1-5 pull-right">
+			<a href="/logout">Logout</a>
+		</div>
+	</div>
+</header>

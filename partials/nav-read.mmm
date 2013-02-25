@@ -7,7 +7,7 @@
 		<div class="col-1-5"><a href="{{ next_link }}" title="Next" class="navigation__icon"><i class="icon-right-open"></i></a></div>
 	</div>
 	<div class="grid">
-		<div class="col-1-2"><i>{{prev_title}}</i></div>
-		<div class="class-col-1-2 pull-right"><i>{{next_title}}</i></div>
+		<div class="col-1-2"><small><i>{{prev_title}}</i></small></div>
+		<div class="class-col-1-2 pull-right"><small><i>{{next_title}}</i></small></div>
 	</div>
 </nav>

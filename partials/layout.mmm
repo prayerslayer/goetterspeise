@@ -3,7 +3,7 @@
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>{{ title }}</title>
+        <title>{{title}}</title>
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
@@ -12,17 +12,10 @@
         <link rel="stylesheet" href="/styles/style.css">
     </head>
     <body>
+        {{>header}}
         <div class="grid pie-clearfix">
-            <div class="col-1-4">
-                <ul class="sidebar__tags">
-                    <li>Sidebar Item 2</li>
-                    <li>Sidebar Item 1</li>
-                </ul>
-            </div>
-            <div class="col-3-4">
-                {{>read}}
-            </div>
-            
+            {{>content}}
         </div>
+        {{>footer}}
     </body>
 </html>

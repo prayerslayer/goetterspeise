@@ -1,5 +1,6 @@
 {{>nav-read}}
 
+<div class="col-1-1">
 <article class="post">
 	<h1>Developing a responsive, Retina-friendly site (Part 1)</h1>
 
@@ -25,7 +26,6 @@
 	</ul>
 </p>
 </article>
+</div>
 
-<footer>
-	{{>nav-read}}	
-</footer>
+{{>nav-read}}	

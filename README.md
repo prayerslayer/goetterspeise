@@ -1,12 +1,13 @@
 # Götterspeise
 
-Developing a mobile-first feed reader for exercise. Node.js and CouchDB will be used.
+Developing a mobile-first feed reader for exercise. Node.js and Postgres will be used.
 
 # TODO
 
 FIRST:
-* Integrate Postgres
-* Make Login Page w/ Sessions
+* refactor login routes
+* make sessions
+* Integrate Postgres (pg, any-db)
 * Make Login Page as planned w/ email
 * Make subscription management
 * make crawler
