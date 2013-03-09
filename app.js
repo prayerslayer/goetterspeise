@@ -1,9 +1,16 @@
 var express = require( 'express' ),
 	path = require( "path" ),
+	pg = require( "pg" ),
+	db = require( "any-db" ),
+	pool = db.createPool( process.env.DB_URL, {
+		"min": 1,
+		"max": 20
+	}),
 	site = require( "./site" ),
-	user = require( "./user" ),
+	user = require( "./user" )( pool )
 	app = express();
 
+// configure application
 app.configure( function() {
 	app.set( 'views', __dirname + '/partials' );
 	app.set( 'view engine', 'mmm' );
@@ -19,11 +26,14 @@ app.configure( function() {
 	app.use( app.router );
 	app.use( express.static( path.join( __dirname, 'public' ) ) );
 });
+
+
+
 // main page
 app.get( '/', site.index );
 // login page
 app.get( "/logout/?", user.logout );
-app.get( "/login/:secret?", user.login );
+app.get( "/login/?", user.login );
 app.post( "/login/?", user.send_login );
 // read page
 app.get( "/read/:something", user.read );

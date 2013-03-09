@@ -4,3 +4,6 @@
 	<input type="email" id="email" name="email" autocomplete="on" placeholder="buddy@example.com" required="required">
 	<button type="submit">Login</button>
 </form>
+{{#error}}
+<strong>{{error}}</strong>
+{{/error}}

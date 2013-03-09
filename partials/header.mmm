@@ -1,7 +1,12 @@
 <header>
 	<div class="grid">
 		<div class="col-1-5 pull-right">
-			<a href="/logout">Logout</a>
+			{{#email}}
+				<a href="/logout">Logout</a>
+			{{/email}}
+			{{^email}}
+				<a href="/login">Login</a>
+			{{/email}}
 		</div>
 	</div>
 </header>
