@@ -7,7 +7,8 @@ var express = require( 'express' ),
 		"max": 20
 	}),
 	site = require( "./site" ),
-	user = require( "./user" )( pool )
+	api = require( "./api" )( pool ),
+	user = require( "./user" )( pool, api.user )
 	app = express();
 
 // configure application
@@ -34,7 +35,7 @@ app.get( '/', site.index );
 // login page
 app.get( "/logout/?", user.logout );
 app.get( "/login/?", user.login );
-app.post( "/login/?", user.send_login );
+app.post( "/login/?", user.register );
 // read page
 app.get( "/read/:something", user.read );
 
