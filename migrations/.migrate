@@ -1,1 +1,1 @@
-{"migrations":[{"title":"migrations/001-create_tables.js"}],"path":"migrations/.migrate","pos":1,"_events":{}}
+{"migrations":[{"title":"migrations/001-create_tables.js"},{"title":"migrations/002-testdata.js"}],"path":"migrations/.migrate","pos":2,"_events":{}}
