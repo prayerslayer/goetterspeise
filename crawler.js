@@ -14,6 +14,7 @@ var	parser = require( "xml2json" ),
 	moment = require( "moment" ),
 	http = require( "http" ),
 	Q = require( "q" ),
+	async = require( "async" ),
 	crypto = require( "crypto" ),
 	pg = require( "pg" ),
 	db = require( "any-db" ),
@@ -91,14 +92,14 @@ var check = function( subscription ) {
 				var hash = crypto.createHash( "sha512" ).update( JSON.stringify( item ) ).digest( "hex" );
 				// check if an item with this hash exists
 				exists( "items", [{
-						"column": "subscription_id",
-						"operator": "=",
-						"value": subscription.subscription_id
-					}, {
-						"column": "hash",
-						"operator": "=",
-						"value": hash
-					}
+							"column": "subscription_id",
+							"operator": "=",
+							"value": subscription.subscription_id
+						}, {
+							"column": "hash",
+							"operator": "=",
+							"value": hash
+						}
 				]).then( function( db_item ) {
 					if ( !db_item ) {
 						// item does not exist
@@ -109,7 +110,7 @@ var check = function( subscription ) {
 						if ( left <= 0 )
 							defer.resolve( added, [] );
 					} else {
-						console.log( "Item", hash, "already exists");
+						console.log( "Item", item.item_id, "already exists");
 					}
 				})
 			});
@@ -121,41 +122,105 @@ var check = function( subscription ) {
 	return defer.promise;
 };
 
+var add = function( sub_id, item ) {
+	var date = moment( item.pubDate ).toDate(),
+		title = item.title,
+		body = item.description,
+		url = item.link,
+		hash = item.hash
+		tx = pool.begin();
+
+
+	tx.on( "error", function( err ) {
+		console.log( err );
+	});
+	var root_defer = Q.defer();
+
+	Q.fcall( function( ) {
+		console.log( "Getting user id ");
+		var defer = Q.defer();
+		tx.query( "SELECT * FROM tagged_subscriptions ts INNER JOIN user_tags ut ON ut.ut_id = ts.ut_id WHERE ts.subscription_id = $1", [ sub_id ], function( err, result ) {
+				if ( err )
+					defer.reject( err );
+				else
+					defer.resolve( _.map( result.rows, function( usr ) { return usr.user_id; }) );
+			});	
+		return defer.promise;
+	}).then( function( userids ) {
+		var defer = Q.defer();
+		console.log( "Inserting item" );
+		tx.query( "INSERT INTO items ( subscription_id, title, body, published, url, hash ) VALUES ( $1, $2, $3, $4, $5, $6 )", [ sub_id, title, body, date, url, hash ], function( err, result ) {
+			if ( err )
+				defer.reject( err );
+			else
+				defer.resolve( userids );
+		});
+		return defer.promise;
+	}).then( function( userids ) {
+		var defer = Q.defer();
+		console.log( "Query item id" );
+		tx.query( "SELECT item_id FROM items WHERE subscription_id = $1 AND hash = $2", [ sub_id, hash ], function( err, r ) {
+			if ( err )
+				defer.reject( err );
+			else {
+				defer.resolve( {
+					"userids": userids,
+					"item_id": r.rows[0].item_id
+				});
+			}
+		});
+		return defer.promise;
+	}).then( function( result ) {
+		var userids = result.userids,
+			item_id = result.item_id;
+		
+		var user_tags = function( userid, callback ) {
+			tx.query( "INSERT INTO user_items ( user_id, subscription_id, item_id ) VALUES ( $1, $2, $3 )", [ userid, sub_id, item_id ], function( err, result ) {
+				if ( err )
+					callback( err );
+				else
+					callback( null );
+			});
+		};
+		var tasks = [];
+		_.each( userids, function( userid ) {
+			tasks.push( user_tags.bind( undefined, userid ) );
+		});
+		console.log( tasks );
+		async.parallel( tasks, function( err, result ) {
+			if ( err ) {
+				tx.rollback();
+				root_defer.reject( err );
+			} else {
+				tx.commit();
+				root_defer.resolve();	
+			}
+		});
+	}).fail( function( err ) {
+		tx.rollback();
+		console.error( err );
+	});
+	return root_defer.promise;
+};
+
+var insert = function( sub_id, items ) {
+	_.each( items, function( item ) {
+		add( sub_id, item );
+	});
+};
+
 // TODO how to do infinite loop?
 //while (  ) {
 	// fetch all subscriptions
 
 	pool.query( "SELECT * FROM subscriptions" ).on( "row", function( sub ) {
-		var tx = pool.begin();
-
+		
 		check( sub ).then( function( added, changed ) {
 			console.log( "Check for " + sub.name + " finished" );
-			var left = added.length;
-			//insert added items
-			_.each( added, function( item, i ) {
-				console.log( i );
-				var date = moment( item.pubDate ).toDate(),
-					title = item.title,
-					body = item.description,
-					url = item.link,
-					hash = item.hash;
+			insert( sub.subscription_id, added );
 
-				console.log( "Inserting item " + title );
-				tx.query( "INSERT INTO items ( subscription_id, title, body, published, url, hash ) VALUES ( $1, $2, $3, $4, $5, $6 )", [ sub.subscription_id, title, body, date, url, hash ], function( err, result ) {
-					if ( err ) {
-						console.error( err );
-						throw new Error( err );
-					} else {
-						console.log( result );
-						left--;
-						if ( left <= 0 ) {
-							tx.commit(); // last insert
-						}
-					}
-				});
-			});
 		}).fail( function( error ) {
-			tx.rollback();
+			
 		});
 	});
 //}
