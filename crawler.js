@@ -1,12 +1,6 @@
-// alle subscriptions durchgehen
-// neue posts checken (hash)
-// für jeden user abklären ob neue
-// wenn ja in leseliste einfügen
-// repeat
-
-// TODO: wie connection pool hier reinbringen? sollte ich das überhaupt? eigentlich sinnlos weil ja ständig eine db verbindung gebraucht wird.
-
-// TODO: wie starten/stoppen? braucht es einen server? eigentlich nicht? wirds ein module?
+// TODO: wie unterschiede zwischen ähnlichen posts (tippfehler ausgebessert etc) erkennen?
+// TODO: wie infinite loop? --> async whilst?
+// TODO: wie data sanitation? --> &nbsp;, bilder optimieren etc
 
 var	parser = require( "xml2json" ),
 	https = require( "https" ),
@@ -105,13 +99,10 @@ var check = function( subscription ) {
 						// item does not exist
 						item.hash = hash;
 						added.push( item );
-						left--;
-						console.log( left );
-						if ( left <= 0 )
-							defer.resolve( added, [] );
-					} else {
-						console.log( "Item", item.item_id, "already exists");
 					}
+					left--;
+					if ( left <= 0 )
+						defer.resolve( added, [] );
 				})
 			});
 		});
@@ -122,7 +113,7 @@ var check = function( subscription ) {
 	return defer.promise;
 };
 
-var add = function( sub_id, item ) {
+var add = function( sub_id, item, callback ) {
 	var date = moment( item.pubDate ).toDate(),
 		title = item.title,
 		body = item.description,
@@ -134,7 +125,6 @@ var add = function( sub_id, item ) {
 	tx.on( "error", function( err ) {
 		console.log( err );
 	});
-	var root_defer = Q.defer();
 
 	Q.fcall( function( ) {
 		console.log( "Getting user id ");
@@ -174,12 +164,12 @@ var add = function( sub_id, item ) {
 		var userids = result.userids,
 			item_id = result.item_id;
 		
-		var user_tags = function( userid, callback ) {
+		var user_tags = function( userid, cb ) {
 			tx.query( "INSERT INTO user_items ( user_id, subscription_id, item_id ) VALUES ( $1, $2, $3 )", [ userid, sub_id, item_id ], function( err, result ) {
 				if ( err )
-					callback( err );
+					cb( err );
 				else
-					callback( null );
+					cb( null );
 			});
 		};
 		var tasks = [];
@@ -190,37 +180,55 @@ var add = function( sub_id, item ) {
 		async.parallel( tasks, function( err, result ) {
 			if ( err ) {
 				tx.rollback();
-				root_defer.reject( err );
+				callback( err );
 			} else {
 				tx.commit();
-				root_defer.resolve();	
+				callback( null );
 			}
 		});
 	}).fail( function( err ) {
 		tx.rollback();
-		console.error( err );
+		callback( err );
 	});
-	return root_defer.promise;
 };
 
+// TODO make insert w/ promises
 var insert = function( sub_id, items ) {
+	var defer = Q.defer();
+
+	var tasks = [];
 	_.each( items, function( item ) {
-		add( sub_id, item );
+		tasks.push( add.bind( undefined, sub_id, item ) );
 	});
+
+	async.parallel( tasks, function( err, callback ) {
+		if ( err )
+			defer.reject( err );
+		else
+			defer.resolve();
+	});
+	return defer.promise;
 };
 
-// TODO how to do infinite loop?
-//while (  ) {
-	// fetch all subscriptions
-
-	pool.query( "SELECT * FROM subscriptions" ).on( "row", function( sub ) {
+async.whilst(
+	function() {
+		return true;
+	},
+	function( callback ) {
+		pool.query( "SELECT * FROM subscriptions" ).on( "row", function( sub ) {
 		
-		check( sub ).then( function( added, changed ) {
-			console.log( "Check for " + sub.name + " finished" );
-			insert( sub.subscription_id, added );
+			check( sub ).then( function( added, changed ) {
+				console.log( "Check for " + sub.name + " finished" );
+				insert( sub.subscription_id, added ).then( function() {
+					callback( null );
+				});
 
-		}).fail( function( error ) {
-			
+			}).fail( function( error ) {
+				
+			});
 		});
-	});
-//}
+	},
+	function( err ) {
+
+	}
+);
